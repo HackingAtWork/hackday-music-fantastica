@@ -130,8 +130,8 @@
     <Compile Include="Controllers\Models.fs" />
     <Compile Include="Controllers\TagReader.fs" />
     <Compile Include="Controllers\HomeController.fs" />
+    <Compile Include="Controllers\LibraryController.fs" />
     <Compile Include="Controllers\ValuesController.fs" />
-    <Compile Include="Controllers\PlayListController.fs" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

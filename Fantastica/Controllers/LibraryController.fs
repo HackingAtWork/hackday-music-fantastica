@@ -12,9 +12,12 @@ open Fantastica.Models;
 
 type LibraryController() =
     inherit ApiController()
-    let path = @"C:\Development\hackday-music-fantastica\Fantastica\Content\mp3s"
+    let path= HttpContext.Current.Server.MapPath("~/Content/mp3s")
+    let basePathLength = HttpContext.Current.Server.MapPath("~").Length + 1
     let mp3s= TagReader.getAllId3v2ValidTags (TagReader.getAllMp3Files path)
-              |> List.map (fun s -> {SongTitle=s.Title;Artist=s.JoinedPerformers;AlbumArtist=s.JoinedAlbumArtists;Album=s.Album})
+              |> List.map (fun (s,file) -> 
+                    {SongTitle=s.Title;Artist=s.JoinedPerformers;AlbumArtist=s.JoinedAlbumArtists;
+                     Album=s.Album;Path=System.IO.Path.Combine(path,file).Substring(basePathLength).Replace('\\','/')})
     
     member x.Get([<FromUri>]filter:LibraryFilter) =
 

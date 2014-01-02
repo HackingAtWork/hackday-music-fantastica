@@ -15,7 +15,10 @@ type Song= {
         AlbumArtist:String; 
         
         [<field: DataMember(Name="Album")>]
-        Album:String
+        Album:String;
+
+        [<field: DataMember(Name="Path")>]
+        Path:String
         }
 
 type LibraryFilter() =

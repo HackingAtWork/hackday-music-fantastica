@@ -1,42 +1,45 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+.ac-items {
+    background-color: #F6F3F3;
+    color: #A3A3A3;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.ac-item {
+    border-bottom: 1px;
+    border-bottom-style: solid;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.listing {
+    width: 240px;
 }
 
-/* styles for validation helpers */
-.field-validation-error {
-    color: #b94a48;
+.heading {
+    color: #FFF;
+    width: 100%;
+    background: #1f8dd6;
+    vertical-align: middle;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1em;
 }
 
-.field-validation-valid {
-    display: none;
+
+.dj-list ul {
+    list-style-type: none;
+    height: 110px;
+    padding-left: 0px;
 }
 
-input.input-validation-error {
-    border: 1px solid #b94a48;
-}
+    .dj-list ul > li {
+        float: left;
+        margin-left: 10px;
+        text-align: center;
+        width: 150px;
+        vertical-align: top;
+        overflow: hidden;
+    }
 
-input[type="checkbox"].input-validation-error {
-    border: 0 none;
-}
-
-.validation-summary-errors {
-    color: #b94a48;
-}
-
-.validation-summary-valid {
-    display: none;
-}
+    .dj-list ul img {
+        height: 50px;
+        width: 50px;
+    }

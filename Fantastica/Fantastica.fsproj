@@ -109,29 +109,15 @@
   </ProjectExtensions>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Content Include="Content\Site.css" />
-    <None Include="Content\bootstrap-theme.min.css" />
-    <None Include="Content\bootstrap-theme.css" />
-    <None Include="Content\bootstrap.min.css" />
-    <None Include="Content\bootstrap.css" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <None Include="Scripts\jquery-2.0.3.min.map" />
-    <Content Include="Scripts\jquery-2.0.3.min.js" />
-    <Content Include="Scripts\jquery-2.0.3.js" />
-    <Content Include="Scripts\jquery-2.0.3.intellisense.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\respond.js" />
-    <None Include="fonts\glyphicons-halflings-regular.woff" />
-    <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.svg" />
-    <None Include="fonts\glyphicons-halflings-regular.eot" />
     <Compile Include="Controllers\Models.fs" />
     <Compile Include="Controllers\TagReader.fs" />
     <Compile Include="Controllers\HomeController.fs" />
     <Compile Include="Controllers\LibraryController.fs" />
     <Compile Include="Controllers\ValuesController.fs" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\autocomplete.js" />
+    <Content Include="Scripts\index.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -144,6 +130,9 @@
     </Compile>
     <None Include="packages.config" />
     <Content Include="readme.txt" />
+    <None Include="Content\side-menu.css" />
+    <None Include="Content\site.css" />
+    <None Include="Content\pure.css" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime">

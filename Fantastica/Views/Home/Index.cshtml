@@ -8,9 +8,15 @@
             <a class="pure-menu-heading" href="">
                 My Playlist
             </a>
-            <ng-autocomplete advanced-display="albumList.html" class="listing ng-isolate-scope" max-results="15" min-length="3" on-select="clicked" retrieval-method="getFiles"><div class="ac-wrapper ng-scope" style="width:inherit">    <input type="text" style="width:inherit" ng-model="ngModel" ng-blur="onBlur()" ng-focus="onFocus()" class="ng-pristine ng-valid">    <div class="ac-items ng-hide" style="width:inherit; position: absolute; z-index: 1000;" ng-show="focussed">       <!-- ngRepeat: item in items -->    </div></div></ng-autocomplete>
+            <ng-autocomplete advanced-display="albumList.html" 
+                             class="listing" 
+                             max-results="15" 
+                             min-length="3" 
+                             on-select="clicked" 
+                             retrieval-method="getFiles">
+            </ng-autocomplete>
             <ul>
-                <!-- ngRepeat: item in playlist -->
+                <li ng-repeat="item in playlist"><a>{{item.title}} by {{item.artists}}</a></li>
             </ul>
         </div>
     </div>
@@ -20,9 +26,15 @@
             <a class="pure-menu-heading" href="">
                 Room Playlist
             </a>
-            <ng-autocomplete advanced-display="albumList.html" class="listing ng-isolate-scope" max-results="15" min-length="3" on-select="clicked" retrieval-method="getFiles"><div class="ac-wrapper ng-scope" style="width:inherit">    <input type="text" style="width:inherit" ng-model="ngModel" ng-blur="onBlur()" ng-focus="onFocus()" class="ng-pristine ng-valid">    <div class="ac-items ng-hide" style="width:inherit; position: absolute; z-index: 1000;" ng-show="focussed">       <!-- ngRepeat: item in items -->    </div></div></ng-autocomplete>
+            <ng-autocomplete advanced-display="albumList.html" 
+                             class="listing" 
+                             max-results="15" 
+                             min-length="3" 
+                             on-select="clicked" 
+                             retrieval-method="getFiles">
+            </ng-autocomplete>
             <ul>
-                <!-- ngRepeat: item in playlist -->
+                <li ng-repeat="item in playlist"><a>{{item.title}} by {{item.artists}}</a></li>
             </ul>
         </div>
     </div>

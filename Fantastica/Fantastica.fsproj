@@ -117,7 +117,7 @@
     <Compile Include="Controllers\PlayListController.fs" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\autocomplete.js" />
-    <Content Include="Scripts\home.js" />
+    <Content Include="Scripts\index.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

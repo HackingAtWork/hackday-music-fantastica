@@ -113,8 +113,8 @@
     <Compile Include="Controllers\Models.fs" />
     <Compile Include="Controllers\TagReader.fs" />
     <Compile Include="Controllers\HomeController.fs" />
+    <Compile Include="Controllers\LibraryController.fs" />
     <Compile Include="Controllers\ValuesController.fs" />
-    <Compile Include="Controllers\PlayListController.fs" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\autocomplete.js" />
     <Content Include="Scripts\index.js" />

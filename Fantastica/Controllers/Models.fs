@@ -17,3 +17,11 @@ type Song= {
         [<field: DataMember(Name="Album")>]
         Album:String
         }
+
+type LibraryFilter() =
+    member val Title = "" with get, set
+    member val Album  = "" with get, set
+    member val Artist = "" with get, set
+    member val AlbumArtist  = "" with get, set
+
+

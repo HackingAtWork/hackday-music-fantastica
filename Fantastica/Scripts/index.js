@@ -1,6 +1,6 @@
-var mp3Reader = angular.module('mp3Reader', ['ngAutocompleteModule']);
+var algoDj = angular.module('algoDj', ['ngAutocompleteModule']);
 
-mp3Reader.factory('mp3service', function($http){
+algoDj.factory('mp3service', function($http){
 	return {
 		getFileList: function(filterString, max_results){
 		    var max = max_results || 500;
@@ -13,7 +13,19 @@ mp3Reader.factory('mp3service', function($http){
 	};
 });
 
-mp3Reader.directive('audioPlayer', ['$timeout', function($timeout){
+algoDj.factory('userService', function ($http) {
+    return {
+        getDjs: function (roomName) {
+            return [
+                { name: "Neonidas Basspalooza", avatar: "Fantastica/content/images/suit.png" },
+                { name: "Greg", avatar: "Fantastica/content/images/suit.png" },
+                { name: "Keith", avatar: "Fantastica/content/images/suit.png" }
+            ];
+        }
+    };
+});
+
+algoDj.directive('audioPlayer', ['$timeout', function($timeout){
 	return {
 		restrict: 'E',
 		replace: true,
@@ -48,7 +60,7 @@ mp3Reader.directive('audioPlayer', ['$timeout', function($timeout){
     };
 }]);
 
-mp3Reader.directive('ngAudio', ['$timeout', function($timeout){
+algoDj.directive('ngAudio', ['$timeout', function($timeout){
 	// Runs during compile
 	return {
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
@@ -56,16 +68,24 @@ mp3Reader.directive('ngAudio', ['$timeout', function($timeout){
         template: '<div>' +
         		  '    <audio-player></audio-player>' +
                   '    <div> Now playing: {{currently_playing.title }} by {{ currently_playing.artist }}</div>' +
-                  '    <div> Upcoming:' +
-                  '       <div ng-repeat="item in playlist" ng-if="item.$$hashKey != currently_playing.$$hashKey">{{ item.title }} by {{ item.artist }}</div>' +
-                  '    </div>' + 
                   '</div>',
 		link: function($scope, element, attrs) {
 		}
 	};
 }]);
 
-mp3Reader.controller('homeCtrl', function($scope, $timeout, mp3service){
+algoDj.directive('ngDj', ['$timeout', function ($timeout) {
+    return {
+        restrict: 'E',
+        replace: true,
+        template: '<li>' +
+                  '  <img height="50px" width="50px" src="{{dj.avatar}}" />' +
+                  '  <div>{{dj.name}}</div>' +
+                  '</li>'
+    };
+}]);
+
+algoDj.controller('homeCtrl', function($scope, $timeout, mp3service, userService){
 
     $scope.playlist = [];
     $scope.playing = false;
@@ -90,12 +110,17 @@ mp3Reader.controller('homeCtrl', function($scope, $timeout, mp3service){
 		}
 	};
 
-	$scope.getNextSong = function(){
-		var to_play = $scope.playlist.splice(0,1)[0];
-		
-		if(to_play !== undefined){
-			$scope.playlist.push(to_play);
-			return to_play;
-		}
-	}
+	$scope.getNextSong = function () {
+	    var to_play = $scope.playlist.splice(0, 1)[0];
+
+	    if (to_play !== undefined) {
+	        $scope.playlist.push(to_play);
+	        return to_play;
+	    }
+	};
+
+	$timeout(function () {
+	    $scope.djs = userService.getDjs("");
+	}, 500);
+
 });

@@ -11,3 +11,35 @@
 .listing {
     width: 240px;
 }
+
+.heading {
+    color: #FFF;
+    width: 100%;
+    background: #1f8dd6;
+    vertical-align: middle;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1em;
+}
+
+
+.dj-list ul {
+    list-style-type: none;
+    height: 110px;
+    padding-left: 0px;
+}
+
+    .dj-list ul > li {
+        float: left;
+        margin-left: 10px;
+        text-align: center;
+        width: 150px;
+        vertical-align: top;
+        overflow: hidden;
+    }
+
+    .dj-list ul img {
+        height: 50px;
+        width: 50px;
+    }

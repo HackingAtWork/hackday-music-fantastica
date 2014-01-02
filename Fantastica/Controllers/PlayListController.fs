@@ -13,13 +13,13 @@ open Fantastica.Models;
 [<RoutePrefix("api2/playlist")>]
 type PlayListController() =
     inherit ApiController()
-    let songs =  [|{SongTitle="Black"; Artist="Me"; Album="Pearl Jam"};
-                   {SongTitle="Doesnt Matter"; Artist="Maximus"; Album="Hackday special"};
-                   {SongTitle="zelda_theme"; Artist="Some dude"; Album="Zelda Soundtrack"};
-                   {SongTitle="street_fighter_theme"; Artist="Someone's Mama"; Album="Street Fighter SOundtrack"};|]
     
     /// Gets all values.
     [<Route("")>]
-    member x.Get() = songs
+    member x.Get() = 
+      let path = @"C:\Development\hackday-music-fantastica\Fantastica\Content\mp3s"
+      let mp3s= TagReader.getAllId3v2ValidTags (TagReader.getAllMp3Files path)
+      mp3s |> List.map (fun s -> {SongTitle=s.Title; Artist=s.JoinedPerformers; Album=s.Album; AlbumArtist=s.JoinedAlbumArtists})
+
 
 

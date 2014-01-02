@@ -10,6 +10,9 @@ type Song= {
         
         [<field: DataMember(Name="Artist")>]
         Artist:String; 
+
+        [<field: DataMember(Name="AlbumArtist")>]
+        AlbumArtist:String; 
         
         [<field: DataMember(Name="Album")>]
         Album:String

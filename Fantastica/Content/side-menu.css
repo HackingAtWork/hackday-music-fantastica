@@ -98,9 +98,11 @@ the menu have 100% height and be fixed on the page as the rest of it scrolls.
     All anchors inside the menu should be styled like this.
     */
     .menu a {
+        padding: 5px !important;
         color: #999;
         border: none;
         padding: 0.6em 0 0.6em 0.6em;
+        white-space: normal !important;
     }
 
     /*

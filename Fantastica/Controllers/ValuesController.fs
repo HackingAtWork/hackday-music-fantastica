@@ -1,4 +1,4 @@
-namespace FSharpWeb1.Controllers
+namespace Fantastica.Controllers
 open System
 open System.Collections.Generic
 open System.Linq

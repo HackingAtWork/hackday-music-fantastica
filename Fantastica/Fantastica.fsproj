@@ -109,15 +109,12 @@
   </ProjectExtensions>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <None Include="fonts\glyphicons-halflings-regular.woff" />
-    <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.svg" />
-    <None Include="fonts\glyphicons-halflings-regular.eot" />
     <Compile Include="Controllers\Models.fs" />
-    <Compile Include="Controllers\TagReader.fs" />
     <Compile Include="Controllers\HomeController.fs" />
     <Compile Include="Controllers\ValuesController.fs" />
     <Compile Include="Controllers\PlayListController.fs" />
+    <Compile Include="Controllers\TagReader.fs" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\autocomplete.js" />
     <Content Include="Scripts\home.js" />
@@ -135,6 +132,7 @@
     <Content Include="readme.txt" />
     <None Include="Content\side-menu.css" />
     <None Include="Content\site.css" />
+    <None Include="Content\pure.css" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Antlr3.Runtime">

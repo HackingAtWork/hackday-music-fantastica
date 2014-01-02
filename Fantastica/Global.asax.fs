@@ -1,4 +1,4 @@
-namespace FSharpWeb1
+namespace Fantastica
 
 open System
 open System.Net.Http
@@ -7,6 +7,7 @@ open System.Web.Http
 open System.Web.Mvc
 open System.Web.Routing
 open System.Web.Optimization
+open System.Linq
 
 type BundleConfig() =
     static member RegisterBundles (bundles:BundleCollection) =
@@ -40,12 +41,15 @@ type Global() =
     static member RegisterWebApi(config: HttpConfiguration) =
         // Configure routing
         config.MapHttpAttributeRoutes()
+        let appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(fun t -> t.MediaType = "application/xml");
+        let j=config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
+        
         config.Routes.MapHttpRoute(
             "DefaultApi", // Route name
             "api/{controller}/{id}", // URL with parameters
             { controller = "{controller}"; id = RouteParameter.Optional } // Parameter defaults
         ) |> ignore
-        // Additional Web API settings
+       
 
     static member RegisterFilters(filters: GlobalFilterCollection) =
         filters.Add(new HandleErrorAttribute())

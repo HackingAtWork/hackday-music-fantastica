@@ -1,4 +1,4 @@
-module FSharpWeb1.AssemblyInfo
+module Fantastica.AssemblyInfo
 open System.Reflection
 open System.Runtime.CompilerServices
 

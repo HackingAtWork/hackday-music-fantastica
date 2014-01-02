@@ -34,7 +34,7 @@
                              retrieval-method="getFiles">
             </ng-autocomplete>
             <ul>
-                <li ng-repeat="item in playlist"><a>{{item.title}} by {{item.artists}}</a></li>
+                <li ng-repeat="item in playlist"><a>{{item.Title}} by {{item.Artist}}</a></li>
             </ul>
         </div>
     </div>
@@ -42,8 +42,8 @@
     <div id="main">
         <div class="content">
             <script id="albumList.html" type="text/ng-template">
-          <div><strong>{{item.title}}</strong></div>
-          <div>by {{item.artist}}</div>
+          <div><strong>{{item.Title}}</strong></div>
+          <div>by {{item.Artist}}</div>
         </script>
             <div>
                 <div></div>

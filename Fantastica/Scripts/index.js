@@ -3,8 +3,8 @@ var mp3Reader = angular.module('mp3Reader', ['ngAutocompleteModule']);
 mp3Reader.factory('mp3service', function($http){
 	return {
 		getFileList: function(filterString, max_results){
-			var max = max_results || 500;
-			return $http.get('/files/' + filterString + '?max=' + max).then(
+		    var max = max_results || 500;
+		    return $http.get('/fantastica/api2/playlist').then(
 				function(result){
 					return result.data;
 				}

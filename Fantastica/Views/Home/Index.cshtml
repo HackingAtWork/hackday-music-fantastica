@@ -43,7 +43,7 @@
     <div class="content">
         <div class="dj-list">
             <div class="heading">
-                
+
                 <a>
                     Currently Rockin'
                 </a>
@@ -64,7 +64,24 @@
     </div>
 </script>
 
+<script id="ngAudioTmpl.html" type="text/ng-template">
+    <div>
+        <div class="control-wrapper">
+            <button id="play" ng-click="play()">Play</button>
+            <button id="next">Next</button>
+            <div class="seek-bar position-wrapper">
+                <div class="seek-bar position-bar"></div> 
+            </div>{{ current_time }}/{{totalTime}}
+        </div>
+        <div>
+            <audio-player></audio-player>
+            <div> Now playing: {{currently_playing.title }} by {{ currently_playing.artist }}</div>
+        </div>
+    </div>
+</script>
+
 <script id="albumList.html" type="text/ng-template">
     <div><strong>{{item.Title}}</strong></div>
     <div>by {{item.Artist}}</div>
+
 </script>

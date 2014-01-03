@@ -27,11 +27,10 @@ let filterSongs(mp3s:Song list, filter:LibraryFilter) : Song list =
     let acceptOrFilter (field:string, filter:string) = 
         String.IsNullOrWhiteSpace(filter) 
             || field.ToLower().Contains(filter.ToLower())
-
-    let filterSong (song:Song) = 
+    let songfilter (song:Song) =
         acceptOrFilter(song.Album, filter.Album)
             && acceptOrFilter(song.AlbumArtist, filter.AlbumArtist)
             && acceptOrFilter(song.Artist, filter.Artist)
             && acceptOrFilter(song.Title, filter.Title)
-           
-    mp3s |> List.filter (fun song -> filterSong song)
+
+    List.filter songfilter mp3s

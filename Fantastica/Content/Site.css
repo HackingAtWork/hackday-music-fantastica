@@ -45,14 +45,56 @@
     }
 
 .seek-bar {
-    height:25px;
+    height: 25px;
 }
 
-.position-bar {
-    background-color: #1f8dd6;    
+#audio-player {
+    border-color: #1f8dd6;
+    background-color: #eee;
+    border-style: solid;
+    border-width: 1px;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
-.position-wrapper {
-    width: 180px;
-    background-color: gray;
-}
+    .block {
+        display: block;
+    }
+
+    #audio-player #play-pause {
+        width: 40px;
+        height: 40px;
+    }
+
+    #audio-player #buttons .next {
+        background: url("/Fantastica/content/images/jplayer.blue.monday.jpg") -29px -141px no-repeat;
+        height: 28px;
+        width: 28px;
+    }
+
+    #audio-player #buttons .play {
+        background: url("/Fantastica/content/images/jplayer.blue.monday.jpg") -41px 0 no-repeat;
+    }
+
+    #audio-player #buttons .pause {
+        background: url("/Fantastica/content/images/jplayer.blue.monday.jpg") -41px -42px no-repeat;
+    }
+
+    #audio-player .position-bar {
+        background-color: #1f8dd6;
+    }
+
+    #audio-player #buttons {
+        display: block;
+        overflow: hidden;
+    }
+
+        #audio-player #buttons li {
+            display: inline;
+            float: left;
+        }
+
+    #audio-player .position-wrapper {
+        width: 180px;
+        background-color: gray;
+    }

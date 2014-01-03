@@ -6,7 +6,6 @@ open TagLib.Mpeg
 open System
 open Fantastica.Models
 
-
 let getAllMp3Files(path:string) =
     let dir = new DirectoryInfo(path)
     dir.GetFiles("*.mp3")

@@ -30,12 +30,13 @@ algoDj.directive('audioPlayer', ['$timeout', function($timeout){
 	return {
 		restrict: 'E',
 		replace: true,
-		template: '    <audio controls>' +
+		template: '    <audio>' +
     	          '        <source src="Fantastica/content/mp3s/fables_01_01_aesop.mp3" /> Your browser does not support the audio element. ' +
         	      '    </audio>',
     	link: function($scope, element, attrs){
     		audio = element[0];
-    		var time = 0;
+    		$scope.time = 0;
+    		$scope.percent_complete = 0;
 
             $scope.$watch('readyToPlay', function(newVal, oldVal){
                 if(newVal !== undefined && newVal === true){
@@ -51,20 +52,26 @@ algoDj.directive('audioPlayer', ['$timeout', function($timeout){
                 $timeout(function(){
                     audio.load();
                     audio.play();
-                    playing = true;
+                    $scope.playing = true;
                 }, 250);
+            };
+
+            $scope.togglePlaying = function () {
+                if($scope.playing) {
+                    audio.pause();
+                } else {
+                    audio.play();
+                }
+
+                $scope.playing = !$scope.playing;
             };
 
     		element.bind('ended', setSong);
     		element.bind('timeupdate', function (event) {
-    		   $scope.time = Math.floor(event.target.currentTime);
+    		    $scope.time = Math.floor(event.target.currentTime);
+    		    $scope.percent_complete = event.target.currentTime / event.target.duration * 100;
+    		    if($scope.$$phase !== '$apply'){ $scope.$apply(); }
     		});
-
-    		$scope.$watch('time', function (newVal, oldVal) {
-    		    // anything you want can go here and will safely be run on the next digest.
-    		    $scope.current_time = time;
-    		    if($scope.$$phase !== '$digest'){ scope.$digest(); }
-    		}, true);
 
 			setSong();
 		}
@@ -78,12 +85,7 @@ algoDj.directive('ngAudio', ['$timeout', function($timeout){
         replace: true,
         templateUrl: 'ngAudioTmpl.html',
         link: function (scope, element, attrs) {
-            scope.play = function () {
-                test = scope;
-                test2 = element;
-                var i = 0;
-            };
-		}
+        }
 	};
 }]);
 

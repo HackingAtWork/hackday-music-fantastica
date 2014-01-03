@@ -22,14 +22,12 @@ type FilterTests() =
             Path = "../")
     ]
       
-    [<TestCase("nsync", "", "oh" ,"", "")>]
-    [<TestCase("nsync", "me", "" ,"", "")>]
-    [<TestCase("nsync", "", "" ,"nsy", "")>]
-    [<TestCase("nsync", "", "" ,"", "sync")>]
-    [<TestCase("santana", "", "" ,"san", "san")>]
-    member tc.TestLibs(expectedartist, title, album, artist, albumartist) =
-        let filter = new LibraryFilter(Title = title, Album  = album, Artist = artist, AlbumArtist = albumartist)
-        
+    [<TestCase("nsync", "oh")>]
+    [<TestCase("nsync", "me")>]
+    [<TestCase("nsync", "nsy")>]
+    [<TestCase("nsync", "sync")>]
+    [<TestCase("santana", "san")>]
+    member tc.TestLibs(expectedartist, filter) =
         let x = TagReader.filterSongs(songs, filter)
         Assert.AreEqual(expectedartist, x.Head.Artist)
         

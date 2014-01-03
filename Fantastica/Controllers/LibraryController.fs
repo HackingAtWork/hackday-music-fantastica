@@ -17,7 +17,7 @@ type LibraryController() =
     
     let mp3s = DataStore.Instance.SongRepository.FindAll()
     
-    member x.Get([<FromUri>]filter:LibraryFilter) =
+    member x.Get([<FromUri>]filter:string) =
       TagReader.filterSongs(Seq.toList(mp3s) , filter)
 
     member x.Put([<FromBody>]songIds:string array)=

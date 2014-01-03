@@ -11,17 +11,14 @@ open System.Web.Http;
 open Fantastica.Models;
 open DataStore
 open Fantastica.Api.Entities
+open Fantastica.Api
 
 type UsersController() =
     inherit ApiController()
 
     member x.Get([<FromUri>]filter:UserFilter) =
-        let playList= new PlayList(Name="fuzzy",SongIds=[ "hey"; "hey12"])
-        let u = new User(Name = "Test User", Lists=[playList])
-        saveUser u |> ignore
-
         if(String.IsNullOrWhiteSpace filter.Name) then 
-            getAllUsers
+            DataStore.Instance.UserRepository.FindAll()
         else
-          getUserByName filter.Name
+            DataStore.Instance.UserRepository.Find(fun (u:User) -> u.Name.ToLower().Contains(filter.Name.ToLower()))
 

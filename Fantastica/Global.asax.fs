@@ -8,6 +8,9 @@ open System.Web.Mvc
 open System.Web.Routing
 open System.Web.Optimization
 open System.Linq
+open DataStore
+open Fantastica.Api.Entities
+open Fantastica.Api
 
 type BundleConfig() =
     static member RegisterBundles (bundles:BundleCollection) =
@@ -58,3 +61,10 @@ type Global() =
         Global.RegisterFilters(GlobalFilters.Filters)
         Global.RegisterRoutes(RouteTable.Routes)
         BundleConfig.RegisterBundles BundleTable.Bundles
+        
+        
+        let playList= new PlayList(Name="fuzzy",SongIds=[ "hey"; "hey12"])
+        let u = new User(Name = "Test User", Lists=[playList])
+        DataStore.Instance.UserRepository.Save u |> ignore
+
+        buildSongs

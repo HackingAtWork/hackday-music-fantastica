@@ -110,9 +110,9 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <None Include="fonts\glyphicons-halflings-regular.svg" />
+    <Compile Include="Controllers\TagReader.fs" />
     <Compile Include="Controllers\DataStore.fs" />
     <Compile Include="Controllers\Models.fs" />
-    <Compile Include="Controllers\TagReader.fs" />
     <Compile Include="Controllers\HomeController.fs" />
     <Compile Include="Controllers\LibraryController.fs" />
     <Compile Include="Controllers\ValuesController.fs" />

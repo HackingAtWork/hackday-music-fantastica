@@ -11,8 +11,8 @@ namespace Fantastica.Api {
 
     public void ExclusiveBulkSave(IEnumerable<Song> collection) {
       using (var session = _dbStore.OpenSession()) {
-        var filePaths = from record in session.Query<Song>() select record.Path;
 
+        var filePaths = (from record in session.Query<Song>() select record.Path).ToList();
         foreach (var datum in collection.Where(song => !filePaths.Contains(song.Path))) {
           session.Store(datum);
         }

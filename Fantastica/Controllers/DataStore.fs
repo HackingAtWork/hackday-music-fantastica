@@ -14,4 +14,3 @@ let buildSongs =
                    new Song(Title=s.Title,Artist=s.JoinedPerformers,AlbumArtist=s.JoinedAlbumArtists,
                      Album=s.Album,Path=System.IO.Path.Combine(path,file).Substring(basePathLength).Replace('\\','/')))
     DataStore.Instance.SongRepository.ExclusiveBulkSave(mp3s) |> ignore
-    DataStore.Instance.SongRepository.FindAll()

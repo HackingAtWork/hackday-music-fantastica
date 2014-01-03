@@ -67,4 +67,4 @@ type Global() =
         let u = new User(Name = "Test User", Lists=[playList])
         DataStore.Instance.UserRepository.Save u |> ignore
 
-        buildSongs |> ignore
+        buildSongs

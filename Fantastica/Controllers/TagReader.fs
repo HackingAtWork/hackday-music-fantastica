@@ -23,25 +23,14 @@ let getAllId3v2ValidTags(mp3List) =
     mp3List |> List.map (fun mp3 -> getId3v2Tag mp3)
             |> List.choose id
 
-let filterSongs(mp3s:Song list, filter:LibraryFilter) : Song list =
-    let filterTitle songs: Song list = match filter with
-                            | h when not (String.IsNullOrWhiteSpace(h.Title)) 
-                                -> songs |> List.filter (fun mp3 -> mp3.Title.ToLower().Contains(h.Title.ToLower()))
-                            | _ -> songs
+let filterSongs(mp3s:Song list, filter:string) : Song list =
+    let isMatch (field:string, filter:string) = 
+        String.IsNullOrWhiteSpace(filter) 
+            || field.ToLower().Contains(filter.ToLower())
+    let songfilter (song:Song) =
+        isMatch(song.Album, filter)
+            || isMatch(song.AlbumArtist, filter)
+            || isMatch(song.Artist, filter)
+            || isMatch(song.Title, filter)
 
-    let filterAlbum songs: Song list = match filter with
-                            | h when not (String.IsNullOrWhiteSpace(h.Album)) 
-                                -> songs |> List.filter (fun mp3 -> mp3.Album.ToLower().Contains(h.Album.ToLower()))
-                            | _ -> songs
-     
-    let filterArtist songs: Song list = match filter with
-                            | h when not (String.IsNullOrWhiteSpace(h.Artist)) 
-                                -> songs |> List.filter (fun mp3 -> mp3.Artist.ToLower().Contains(h.Artist.ToLower()))
-                            | _ -> songs
-
-    let filterAlbumArtist songs: Song list = match filter with
-                            | h when not (String.IsNullOrWhiteSpace(h.AlbumArtist)) 
-                                -> songs |> List.filter (fun mp3 -> mp3.AlbumArtist.ToLower().Contains(h.AlbumArtist.ToLower()))
-                            | _ -> songs
-
-    mp3s |> filterTitle |> filterAlbum |> filterArtist |> filterAlbumArtist
+    List.filter songfilter mp3s

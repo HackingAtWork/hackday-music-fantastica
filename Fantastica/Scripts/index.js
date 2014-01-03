@@ -1,3 +1,21 @@
+var getCleanTime = function(time)
+{
+    return time == "00" ? "" : time + ":";
+};
+
+String.prototype.toHHMMSS = function () {
+    var sec_num = parseInt(this, 10); // don't forget the second parm
+    var hours = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours < 10) { hours = "0" + hours; }
+    if (minutes < 10) { minutes = "0" + minutes; }
+    if (seconds < 10) { seconds = "0" + seconds; }
+    var time = getCleanTime(hours) + minutes + ':' + seconds;
+    return time;
+};
+
 var algoDj = angular.module('algoDj', ['ngAutocompleteModule']);
 
 algoDj.factory('eventBus', function () {
@@ -99,9 +117,10 @@ algoDj.directive('audioPlayer', ['$timeout', 'eventBus', function ($timeout, bus
 
             element.bind('timeupdate', function (event) {
                 var time = Math.floor(event.target.currentTime);
-                var percent_complete = event.target.currentTime / event.target.duration * 100;
+                var total_time = Math.floor(event.target.duration);
+                var percent_complete = event.target.currentTime / total_time * 100;
 
-                bus.publish('tick', [{ time: time, percent_complete: percent_complete }]);
+                bus.publish('tick', [{ time: time.toString().toHHMMSS(), total_time: total_time.toString().toHHMMSS(), percent_complete: percent_complete }]);
             });
 
             bus.publish('songEnded');
@@ -127,6 +146,7 @@ algoDj.directive('ngAudio', ['$timeout', 'eventBus', function ($timeout, bus) {
 
             bus.subscribe('tick', function (data) {
                 scope.time = data.time;
+                scope.total_time = data.total_time;
                 scope.percent_complete = data.percent_complete;
                 scope.safeApply();
             });

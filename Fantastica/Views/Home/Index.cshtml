@@ -20,25 +20,6 @@
         </ul>
     </div>
 </div>
-<!--
-    <div class="menu stacked">
-    <div class="pure-menu pure-menu-open">
-        <a class="pure-menu-heading" href="">
-            Room Playlist
-        </a>
-        <ng-autocomplete advanced-display="albumList.html"
-                         class="listing"
-                         max-results="15"
-                         min-length="3"
-                         on-select="clicked"
-                         retrieval-method="getFiles">
-        </ng-autocomplete>
-        <ul>
-            <li ng-repeat="item in playlist"><a>{{item.Title}} by {{item.Artist}}</a></li>
-        </ul>
-    </div>
-</div>
-    -->
 <div id="main">
     <div class="content">
         <div class="dj-list">
@@ -67,19 +48,24 @@
 <script id="ngAudioTmpl.html" type="text/ng-template">
     <div id="audio-player">
         <div class="control-wrapper">
+            <div>
+                <h2>{{currently_playing.title }} </h2>
+                <h3>{{ currently_playing.artist }}</h3>
+            </div>
             <ul id="buttons">
                 <li><a id="play-pause" ng-class="playing ? 'pause' : 'play'" class="block" ng-click="togglePlaying()"></a></li>
                 <li><a ng-click="nextClicked()" class="next block"></a></li>
             </ul>
             <br />
-            <div class="seek-bar position-wrapper">
-                <div class="seek-bar position-bar" style="width: {{percent_complete}}%;"></div>
-                {{ time }}/{{totalTime}}
+            <div class="seek-container">
+                <div class="seek-bar position-wrapper">
+                    <div class="seek-bar position-bar" style="width: {{percent_complete}}%;"></div>
+                </div>
+                <div class="seek-time">{{ time }}/{{total_time}}</div>
             </div>
         </div>
         <div>
             <audio-player></audio-player>
-            <div> Now playing: {{currently_playing.title }} by {{ currently_playing.artist }}</div>
         </div>
     </div>
 </script>

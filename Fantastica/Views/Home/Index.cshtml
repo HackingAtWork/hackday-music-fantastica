@@ -20,8 +20,8 @@
         </ul>
     </div>
 </div>
-
-<div class="menu stacked">
+<!--
+    <div class="menu stacked">
     <div class="pure-menu pure-menu-open">
         <a class="pure-menu-heading" href="">
             Room Playlist
@@ -38,12 +38,12 @@
         </ul>
     </div>
 </div>
-
+    -->
 <div id="main">
     <div class="content">
         <div class="dj-list">
             <div class="heading">
-                
+
                 <a>
                     Currently Rockin'
                 </a>
@@ -64,7 +64,27 @@
     </div>
 </script>
 
+<script id="ngAudioTmpl.html" type="text/ng-template">
+    <div id="audio-player">
+        <div class="control-wrapper">
+            <ul id="buttons">
+                <li><a id="play-pause" ng-class="playing ? 'pause' : 'play'" class="block" ng-click="togglePlaying()"></a></li>
+                <li><a class="next block"></a></li>
+            </ul>
+            <br />
+            <div class="seek-bar position-wrapper">
+                <div class="seek-bar position-bar" style="width: {{percent_complete}}%;"></div>
+            </div>{{ time }}/{{totalTime}}
+        </div>
+        <div>
+            <audio-player></audio-player>
+            <div> Now playing: {{currently_playing.title }} by {{ currently_playing.artist }}</div>
+        </div>
+    </div>
+</script>
+
 <script id="albumList.html" type="text/ng-template">
     <div><strong>{{item.Title}}</strong></div>
     <div>by {{item.Artist}}</div>
+
 </script>

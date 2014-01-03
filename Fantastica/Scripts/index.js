@@ -25,15 +25,18 @@ algoDj.factory('userService', function ($http) {
     };
 });
 
+
 algoDj.directive('audioPlayer', ['$timeout', function($timeout){
 	return {
 		restrict: 'E',
 		replace: true,
-		template: '    <audio controls>' +
-    	          '        <source src="{{ currently_playing.path }}" /> Your browser does not support the audio element. ' +
+		template: '    <audio>' +
+    	          '        <source src="Fantastica/content/mp3s/fables_01_01_aesop.mp3" /> Your browser does not support the audio element. ' +
         	      '    </audio>',
     	link: function($scope, element, attrs){
     		audio = element[0];
+    		$scope.time = 0;
+    		$scope.percent_complete = 0;
 
             $scope.$watch('readyToPlay', function(newVal, oldVal){
                 if(newVal !== undefined && newVal === true){
@@ -49,11 +52,26 @@ algoDj.directive('audioPlayer', ['$timeout', function($timeout){
                 $timeout(function(){
                     audio.load();
                     audio.play();
-                    playing = true;
+                    $scope.playing = true;
                 }, 250);
             };
 
+            $scope.togglePlaying = function () {
+                if($scope.playing) {
+                    audio.pause();
+                } else {
+                    audio.play();
+                }
+
+                $scope.playing = !$scope.playing;
+            };
+
     		element.bind('ended', setSong);
+    		element.bind('timeupdate', function (event) {
+    		    $scope.time = Math.floor(event.target.currentTime);
+    		    $scope.percent_complete = event.target.currentTime / event.target.duration * 100;
+    		    if($scope.$$phase !== '$apply'){ $scope.$apply(); }
+    		});
 
 			setSong();
 		}
@@ -65,12 +83,9 @@ algoDj.directive('ngAudio', ['$timeout', function($timeout){
 	return {
 		restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
         replace: true,
-        template: '<div>' +
-        		  '    <audio-player></audio-player>' +
-                  '    <div> Now playing: {{currently_playing.title }} by {{ currently_playing.artist }}</div>' +
-                  '</div>',
-		link: function($scope, element, attrs) {
-		}
+        templateUrl: 'ngAudioTmpl.html',
+        link: function (scope, element, attrs) {
+        }
 	};
 }]);
 

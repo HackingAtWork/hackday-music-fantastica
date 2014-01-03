@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fantastica", "Fantastica\Fantastica.fsproj", "{695A839C-C6CC-43BC-99FB-5E2976DD55F2}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FantasticaTests", "FantasticaTests\FantasticaTests.fsproj", "{6506A245-0177-4869-94E9-28526BFA82F7}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fantastica.Api", "Fantastica.Api\Fantastica.Api.csproj", "{4C1AF301-DADC-47A6-8EDE-561DE2BC1C7F}"
 EndProject
 Global
@@ -17,6 +19,10 @@ Global
 		{695A839C-C6CC-43BC-99FB-5E2976DD55F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{695A839C-C6CC-43BC-99FB-5E2976DD55F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{695A839C-C6CC-43BC-99FB-5E2976DD55F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6506A245-0177-4869-94E9-28526BFA82F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6506A245-0177-4869-94E9-28526BFA82F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6506A245-0177-4869-94E9-28526BFA82F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6506A245-0177-4869-94E9-28526BFA82F7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4C1AF301-DADC-47A6-8EDE-561DE2BC1C7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4C1AF301-DADC-47A6-8EDE-561DE2BC1C7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C1AF301-DADC-47A6-8EDE-561DE2BC1C7F}.Release|Any CPU.ActiveCfg = Release|Any CPU

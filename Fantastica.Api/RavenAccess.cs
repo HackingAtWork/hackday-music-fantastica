@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.AccessControl;
 using Raven.Client;
 using Raven.Client.Embedded;
@@ -34,8 +36,11 @@ namespace Fantastica.Api {
         return session.Query<T>();
       }
     }
-  }
-}
 
-namespace Fantastica.Api.Entities {
+    public IEnumerable<T> Query<T>(Func<T,bool> pred ) {
+      using (var session = dbInstance.OpenSession()) {
+        return session.Query<T>().Where(pred);
+      }
+    }
+  }
 }

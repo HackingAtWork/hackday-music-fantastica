@@ -8,3 +8,5 @@ let saveUser (u : User) =
 
 let getAllUsers = 
         RavenAccess.Instance.Query<User>()
+
+let getUserByName (name:string) = RavenAccess.Instance.Query<User>(fun u -> u.Name.ToLower().Contains(name.ToLower()))

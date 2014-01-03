@@ -4,21 +4,22 @@ open NUnit.Framework
 open FSharp.Data
 open TagReader
 open Fantastica.Models
+open Fantastica.Api.Entities
 
 [<TestFixture>]
 type FilterTests() = 
     let songs = [
-        {   Song.SongTitle = "Hit me baby"; 
-            Album = "oh yeah"; 
-            Artist = "nsync";
-            Path = "../"
+        new Song(Title = "Hit me baby", 
+            Album = "oh yeah", 
+            Artist = "nsync",
+            Path = "../",
             AlbumArtist = "nsync"
-        }; {   
-            Song.SongTitle = "baby for you"; 
-            Album = "black"; 
-            Artist = "santana";
-            AlbumArtist = "santana";
-            Path = "../";}
+        ); 
+        new Song(Title = "baby for you", 
+            Album = "black", 
+            Artist = "santana",
+            AlbumArtist = "santana",
+            Path = "../")
     ]
       
     [<TestCase("nsync", "", "oh" ,"", "")>]

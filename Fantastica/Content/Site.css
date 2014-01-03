@@ -57,44 +57,46 @@
     margin: 0 auto;
 }
 
-    .block {
-        display: block;
+.block {
+    display: block;
+}
+
+#audio-player #play-pause {
+    width: 40px;
+    height: 40px;
+}
+
+#audio-player #buttons .next {
+    background: url("/Fantastica/content/images/jplayer.blue.monday.jpg") -29px -141px no-repeat;
+    height: 28px;
+    width: 28px;
+}
+
+#audio-player #buttons .play {
+    background: url("/Fantastica/content/images/jplayer.blue.monday.jpg") -41px 0 no-repeat;
+}
+
+#audio-player #buttons .pause {
+    background: url("/Fantastica/content/images/jplayer.blue.monday.jpg") -41px -42px no-repeat;
+}
+
+#audio-player .position-bar {
+    background-color: #1f8dd6;
+    float: left;
+}
+
+#audio-player #buttons {
+    display: block;
+    overflow: hidden;
+}
+
+    #audio-player #buttons li {
+        display: inline;
+        float: left;
     }
 
-    #audio-player #play-pause {
-        width: 40px;
-        height: 40px;
-    }
-
-    #audio-player #buttons .next {
-        background: url("/Fantastica/content/images/jplayer.blue.monday.jpg") -29px -141px no-repeat;
-        height: 28px;
-        width: 28px;
-    }
-
-    #audio-player #buttons .play {
-        background: url("/Fantastica/content/images/jplayer.blue.monday.jpg") -41px 0 no-repeat;
-    }
-
-    #audio-player #buttons .pause {
-        background: url("/Fantastica/content/images/jplayer.blue.monday.jpg") -41px -42px no-repeat;
-    }
-
-    #audio-player .position-bar {
-        background-color: #1f8dd6;
-    }
-
-    #audio-player #buttons {
-        display: block;
-        overflow: hidden;
-    }
-
-        #audio-player #buttons li {
-            display: inline;
-            float: left;
-        }
-
-    #audio-player .position-wrapper {
-        width: 180px;
-        background-color: gray;
-    }
+#audio-player .position-wrapper {
+    width: 180px;
+    background-color: gray;
+    margin: 0 auto;
+}

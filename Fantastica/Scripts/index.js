@@ -47,10 +47,18 @@ algoDj.factory('eventBus', function () {
 });
 
 algoDj.factory('mp3service', function ($http) {
+
+    var buildRequest = function (filterBy) {
+        return 'artist=' + filterBy.artist +
+            '&title=' + filterBy.title +
+            '&album=' + filterBy.album;
+    };
     return {
-        getFileList: function (filterString, max_results) {
+
+        getFileList: function (filterObj, max_results) {
             var max = max_results || 500;
-            return $http.get('/fantastica/api/playlist').then(
+            var requestArgs = buildRequest(filterObj);
+            return $http.get('/fantastica/api/library?' + requestArgs).then(
 				function (result) {
 				    return result.data;
 				}
@@ -177,7 +185,7 @@ algoDj.controller('homeCtrl', function ($scope, $timeout, mp3service, userServic
     $scope.currently_playing = {};
 
     $scope.getFiles = function (input, max_results) {
-        return mp3service.getFileList(input, max_results);
+        return mp3service.getFileList({ title: input, artist: '', album: '' }, max_results);
     };
 
     $scope.clicked = function (selected) {

@@ -82,12 +82,21 @@
 
 #audio-player .position-bar {
     background-color: #1f8dd6;
-    float: left;
 }
 
+
 #audio-player #buttons {
-    display: block;
+    padding:0px;
+    display: inline-block;
     overflow: hidden;
+}
+
+#audio-player .seek-container {
+    display:inline-block;
+}
+
+#audio-player .seek-time {
+    /*float: left;*/
 }
 
     #audio-player #buttons li {
@@ -99,4 +108,20 @@
     width: 180px;
     background-color: gray;
     margin: 0 auto;
+    float:left;
 }
+
+.control-wrapper {
+    text-align: center;
+    padding: 10px;
+}
+
+    .control-wrapper h2 {
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+
+    .control-wrapper h3 {
+        margin-top: 5px;
+        padding: 0px;
+    }

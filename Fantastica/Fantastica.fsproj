@@ -114,9 +114,11 @@
     <Compile Include="Controllers\TagReader.fs" />
     <Compile Include="Controllers\DataStore.fs" />
     <Compile Include="Controllers\HomeController.fs" />
-    <Compile Include="Controllers\LibraryController.fs" />
     <Compile Include="Controllers\ValuesController.fs" />
     <Compile Include="Controllers\UsersController.fs" />
+    <Compile Include="Controllers\PlayListController.fs" />
+    <Compile Include="Controllers\RoomsController.fs" />
+    <Compile Include="Controllers\LibraryController.fs" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\autocomplete.js" />
     <Content Include="Scripts\index.js" />

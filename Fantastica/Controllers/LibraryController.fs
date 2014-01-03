@@ -17,7 +17,7 @@ type LibraryController() =
     let basePathLength = HttpContext.Current.Server.MapPath("~").Length + 1
     let mp3s= TagReader.getAllId3v2ValidTags (TagReader.getAllMp3Files path)
               |> List.map (fun (s,file) -> 
-                    new Song(Title=s.Title,Artist=s.JoinedPerformers,AlbumArtist=s.JoinedAlbumArtists,
+                   new Song(Title=s.Title,Artist=s.JoinedPerformers,AlbumArtist=s.JoinedAlbumArtists,
                      Album=s.Album,Path=System.IO.Path.Combine(path,file).Substring(basePathLength).Replace('\\','/')))
     
     member x.Get([<FromUri>]filter:LibraryFilter) =

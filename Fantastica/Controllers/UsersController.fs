@@ -16,7 +16,8 @@ type UsersController() =
     inherit ApiController()
 
     member x.Get() =
-        let u = new User(Name = "Test User")
+        let playList= new PlayList(Name="fuzzy",SongIds=[ "hey"; "hey12"])
+        let u = new User(Name = "Test User", Lists=[playList])
         saveUser u |> ignore
 
         getAllUsers

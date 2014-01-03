@@ -9,7 +9,13 @@ algoDj.factory('mp3service', function($http){
 					return result.data;
 				}
 			);
-		}
+		},
+        getNextSong: function() {
+            return $http.get('fantastica/home/NextSong').then(
+                function (result) {
+                    return result.data;
+                });
+        }
 	};
 });
 
@@ -106,9 +112,9 @@ algoDj.controller('homeCtrl', function($scope, $timeout, mp3service, userService
     $scope.playing = false;
     $scope.readyToPlay = false;
 
-    $scope.getFiles = function(input, max_results){
-    	return mp3service.getFileList(input, max_results);
-    }
+    $scope.getFiles = function (input, max_results) {
+        return mp3service.getFileList(input, max_results);
+    };
 
 	$scope.clicked = function(selected){
 
@@ -126,12 +132,7 @@ algoDj.controller('homeCtrl', function($scope, $timeout, mp3service, userService
 	};
 
 	$scope.getNextSong = function () {
-	    var to_play = $scope.playlist.splice(0, 1)[0];
-
-	    if (to_play !== undefined) {
-	        $scope.playlist.push(to_play);
-	        return to_play;
-	    }
+	    mp3service.getNextSong();
 	};
 
 	$timeout(function () {

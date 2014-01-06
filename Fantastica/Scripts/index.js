@@ -84,7 +84,7 @@ algoDj.directive('audioPlayer', ['$timeout', 'eventBus', function ($timeout, bus
         restrict: 'E',
         replace: true,
         template: '    <audio>' +
-    	          '        <source src=" {{ song.data }}" /> Your browser does not support the audio element. ' +
+    	          '        <source src=" {{ path }}" /> Your browser does not support the audio element. ' +
         	      '    </audio>',
         link: function ($scope, element, attrs) {
             var audio = element[0];
@@ -93,6 +93,7 @@ algoDj.directive('audioPlayer', ['$timeout', 'eventBus', function ($timeout, bus
             bus.subscribe('nextSongLoaded', function (song) {
 
                 $scope.song = song;
+                $scope.path = '/fantastica/' + song.Path;
 
                 $timeout(function () {
                     audio.load();
@@ -199,7 +200,7 @@ algoDj.controller('homeCtrl', function ($scope, $timeout, mp3service, userServic
     eventBus.subscribe('songEnded', function () {
         $scope.currently_playing = mp3service.getNextSong()
             .then(function (data) {
-                eventBus.publish('nextSongLoaded', [{artist:'bees', title:'sting sting', data: '/fantastica/content/mp3s/' + data }]);
+                eventBus.publish('nextSongLoaded', [data]);
             });
     });
 
